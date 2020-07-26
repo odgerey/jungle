@@ -1,9 +1,9 @@
-<h1>Admin::Dashboard#show</h1>
-<p>Find me in app/views/admin/dashboard/show.html.erb</p>
-
-<div class="stat-card">
-      <h3><%= @categories_count %></h3>
-      <h4>Total Categories</h4>
-      <h4><%=link_to "Total Categories", [:admin, :categories] %></h4>
+<h1>Admin > Dashboard</h1>
+<p>Admin modifiable features:</p>
+<div class="well">
+<%= link_to 'See all categories', [:admin, :categories], class: 'btn btn-info' %>
 </div>
   
+<div class="well">
+<%= link_to 'See all products', [:admin, :products], class: 'btn btn-info' %>
+</div>
