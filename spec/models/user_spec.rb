@@ -15,20 +15,20 @@ RSpec.describe User, type: :model do
 
     it 'should save a matching password and password confirmation' do
       user = User.create(
-        name = "test",
-        email = "test@test.com",
-        password = "test",
-        password_confirmation = "testt"
+        name: "test",
+        email: "test@test.com",
+        password:  "test",
+        password_confirmation: "testt"
       )
       expect(user.password).to_not be_equal(user.password_confirmation)
     end 
 
     it 'should have a password and password confirmation' do
       user = User.create(
-        name = "test",
-        email = "test@test.com",
-        password = "test",
-        password_confirmation = nil
+        name: "test",
+        email: "test@test.com",
+        password: "test",
+        password_confirmation: nil
       )
       expect(user).to_not be_valid
     end
