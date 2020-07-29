@@ -20,13 +20,20 @@ RSpec.feature "User can add to cart", type: :feature,  js: true do
   scenario "The cart updates by one" do
     # ACT
     visit root_path
-    first('.product').click_on('Add')
+  
+    expect(page).to have_text('My Cart (0)')
+    product = page.first('article.product')
+    button = product.find_button('Add')
+    button.click 
+    
+    save_screenshot "ButtonClick.png"
+    
 
-    # DEBUG
-    save_screenshot "add_to_cart.png"
+    # # DEBUG
+    # save_screenshot "add_to_cart.png"
 
-    # VERIFY
-    within ('nav') { expect(page).to have_content ('My Cart (0)') }
+    # # VERIFY
+    expect(page).to have_content('My Cart (1)')
   end
 end
 
