@@ -9,7 +9,13 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true, length: { minimum: 3 }
 
   def self.authenticate_with_credentials(email, password)
-      user = where('LOWER(email) = ?', email.downcase.delete(' '))[0]
-      user && user.authenticate(password)
+      # user = where('LOWER(email) = ?', email.downcase.delete(' '))[0]
+      # user && user.authenticate(password)
+      user = User.find_by_email(email.strip.downcase)
+    if user && user.authenticate(password)
+      return user
+    else
+      return nil
+    end
   end
 end
